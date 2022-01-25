@@ -1,0 +1,25 @@
+﻿<Window x:Class="CaesarCipher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CaesarCipher"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="encipherButton" Content="Encipher" HorizontalAlignment="Left" Margin="53,213,0,0" VerticalAlignment="Top" Height="30" Width="270" Click="Button_Click"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Center" Margin="0,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="756" Height="129"/>
+        <Button x:Name="decipherButton" Content="Decipher" HorizontalAlignment="Left" Margin="450,213,0,0" VerticalAlignment="Top" Height="30" Width="296" Click="Button_Click_1"/>
+        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Margin="90,177,0,0" Text="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="44" Height="27"/>
+        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="309,178,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem IsSelected="True">Right</ComboBoxItem>
+            <ComboBoxItem>Left</ComboBoxItem>
+        </ComboBox>
+        <TextBox x:Name="textBox3" HorizontalAlignment="Center" Margin="0,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="756" Height="124"/>
+        <Label Content="Text to cipher/decipher:" HorizontalAlignment="Left" Margin="22,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.246,-0.044"/>
+        <Label Content="Shift:" HorizontalAlignment="Left" Margin="49,175,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.041,0.11"/>
+        <Label Content="Direction:" HorizontalAlignment="Left" Margin="243,175,0,0" VerticalAlignment="Top"/>
+        <Label Content="Result:" HorizontalAlignment="Left" Margin="22,248,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
