@@ -25,36 +25,6 @@ namespace CaesarCipher
             InitializeComponent();
         }
 
-        private char EncipherChar(char c, int key)
-        {
-            if (!char.IsLetter(c))
-            {
-                return c;
-            }
-            int offset = char.IsUpper(c) ? 'A' : 'a';
-            return (char)((((c + key) - offset) % 26) + offset);
-        }
-
-        public string Encipher(string input, int key, string direction)
-        {
-            string output = "";
-            switch (direction)
-            {
-                case "Right":
-                    foreach (char c in input)
-                    {
-                        output += EncipherChar(c, key);
-                    }
-                    break;
-                case "Left":
-                    foreach (char c in input)
-                    {
-                        output += EncipherChar(c, 26 - key);
-                    }
-                    break;
-            }
-            return output;
-        }
         private int ValidateKey(string input)
         {
             int key;
@@ -78,7 +48,7 @@ namespace CaesarCipher
             }
             string direction = comboBox1.Text;
 
-            var encryptedText = Encipher(input, key, direction);
+            var encryptedText = Cipher.Encipher(input, key, direction);
 
             textBox3.Text = encryptedText;
         }
@@ -94,7 +64,7 @@ namespace CaesarCipher
             }
             string direction = comboBox1.Text == "Left" ? "Right" : "Left";
 
-            var decryptedText = Encipher(input, key, direction);
+            var decryptedText = Cipher.Encipher(input, key, direction);
 
             textBox3.Text = decryptedText;
         }
