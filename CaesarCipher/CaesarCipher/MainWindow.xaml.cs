@@ -25,30 +25,38 @@ namespace CaesarCipher
             InitializeComponent();
         }
 
-        private int ValidateKey(string input)
+        private int ParseKey(string input)
         {
-            int key;
-            bool success = int.TryParse(input, out key);
-            if (!success || key < 1 || key > 25)
+            if (!int.TryParse(input, out int key) || key < 1 || key > 25)
             {
-                MessageBox.Show("Key should be a number between 1 and 25", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Shift should be a number between 1 and 25", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return -1;
             }
             return key;
+        }
+        private Direction? ParseDirection(string input)
+        {
+            if (!Enum.TryParse(input, out Direction direction))
+            {
+                MessageBox.Show("Direction should be left or right", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return null;
+            }
+            return direction;
         }
 
         //Encipher button
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string input = textBox1.Text;
-            int key = ValidateKey(textBox2.Text);
-            if (key == -1)
+            int key = ParseKey(textBox2.Text);
+            var direction = ParseDirection(comboBox1.Text);
+
+            if(direction == null || key == -1)
             {
                 return;
             }
-            string direction = comboBox1.Text;
 
-            var encryptedText = Cipher.Encipher(input, key, direction);
+            var encryptedText = Cipher.Encipher(input, key, direction.Value);
 
             textBox3.Text = encryptedText;
         }
@@ -57,14 +65,17 @@ namespace CaesarCipher
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             string input = textBox1.Text;
-            int key = ValidateKey(textBox2.Text);
-            if (key == -1)
+            int key = ParseKey(textBox2.Text);
+            var direction = ParseDirection(comboBox1.Text);
+
+            if (direction == null || key == -1)
             {
                 return;
             }
-            string direction = comboBox1.Text == "Left" ? "Right" : "Left";
 
-            var decryptedText = Cipher.Encipher(input, key, direction);
+            direction = direction == Direction.Right ? Direction.Left : Direction.Right;
+
+            var decryptedText = Cipher.Encipher(input, key, direction.Value);
 
             textBox3.Text = decryptedText;
         }

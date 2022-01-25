@@ -7,11 +7,11 @@ namespace CaesarCipherTests
     public class CipherTests
     {
         [Theory]
-        [InlineData("test cipher", 3, "Right", "whvw flskhu")]
-        [InlineData("whvw flskhu", 3, "Left", "test cipher")]
-        [InlineData("abcdefghijklmnopqrstuvwxyz", 10, "Right", "klmnopqrstuvwxyzabcdefghij")]
-        [InlineData("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 20, "Left", "GHIJKLMNOPQRSTUVWXYZABCDEF")]
-        public void CanEncryptTheory(string input, int key, string direction, string expected)
+        [InlineData("test cipher", 3, Direction.Right, "whvw flskhu")]
+        [InlineData("whvw flskhu", 3, Direction.Left, "test cipher")]
+        [InlineData("abcdefghijklmnopqrstuvwxyz", 10, Direction.Right, "klmnopqrstuvwxyzabcdefghij")]
+        [InlineData("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 20, Direction.Left, "GHIJKLMNOPQRSTUVWXYZABCDEF")]
+        public void CanEncryptTheory(string input, int key, Direction direction, string expected)
         {
             string encryptedText = Cipher.Encipher(input, key, direction);
 

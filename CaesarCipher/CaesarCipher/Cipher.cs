@@ -16,18 +16,18 @@ namespace CaesarCipher
             return (char)((((c + key) - offset) % 26) + offset);
         }
 
-        public static string Encipher(string input, int key, string direction)
+        public static string Encipher(string input, int key, Direction direction)
         {
             string output = "";
             switch (direction)
             {
-                case "Right":
+                case Direction.Right:
                     foreach (char c in input)
                     {
                         output += EncipherChar(c, key);
                     }
                     break;
-                case "Left":
+                case Direction.Left:
                     foreach (char c in input)
                     {
                         output += EncipherChar(c, 26 - key);
